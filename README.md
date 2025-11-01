@@ -52,119 +52,279 @@ A web application for structured management, version control, and reuse of REDCa
 | **Authentication** | JWT (JSON Web Token) |
 | **Styling** | CSS / Tailwind |
 
-## Prerequisites
+# Installation Guide
+
+## 1. Requirements
 
 Before installation, ensure the following software is installed:
 
-Component	Minimum Version
-Python	3.10
-Node.js / npm	18+
-PostgreSQL	14+
-Git	latest#
+| Component | Recommended Version |
+|------------|--------------------|
+| Python | 3.10+ |
+| Node.js & npm | Node 18+ (includes npm) |
+| PostgreSQL | 14+ |
+| Git | latest |
+| (Optional) PyCharm | 2023+ (Community or Professional) |
 
-## Installation
+Check versions:
 
-Clone the repository:
+```bash
+python --version
+node --version
+npm --version
+psql --version
+git --version
+```
 
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+> On macOS/Linux, use `python3` instead of `python`.
 
+---
 
-The repository is structured as:
+## 2. Repository Structure
 
+```
 .
-├── backend/        # Flask REST API
-├── frontend/       # React frontend
-└── README.md
+├─ backend/               # Flask REST API
+│  ├─ requirements.txt
+│  ├─ alembic.ini
+│  └─ src/...             # Flask app (e.g., app/__init__.py)
+├─ frontend/              # React (Create React App via npx)
+│  ├─ package.json
+│  └─ src/...
+└─ README.md
+```
 
-### 🔹 1. Backend Setup (Flask)
+> Adjust paths as needed for your project.
 
-Navigate into the backend folder and create a virtual environment:
+---
 
-cd backend
-python3 -m venv .venv
-source .venv/bin/activate    # On Windows: .venv\Scripts\activate
+## 3. Database Setup (PostgreSQL)
 
+Create a dedicated database and user:
 
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Create a .env file in the backend directory:
-
-FLASK_APP=backend.app:app
-FLASK_ENV=development
-JWT_SECRET=change_this_secret
-DATABASE_URL=postgresql+psycopg://app_user:password@localhost:5432/app_db
-CORS_ORIGINS=http://localhost:5173
-
-
-Initialize the database:
-
-alembic upgrade head
-
-
-Start the backend server:
-
-flask run --host=0.0.0.0 --port=8000
-
-
-The API will be available at:
-http://localhost:8000
-
-### 🔹 2. Frontend Setup (React)
-
-In a new terminal:
-
-cd frontend
-npm install
-
-
-Create a .env file:
-
-VITE_API_BASE_URL=http://localhost:8000
-
-
-Start the development server:
-
-npm run dev
-
-
-The frontend runs at:
-http://localhost:5173
-
-## Database Setup (PostgreSQL)
-
-In PostgreSQL (psql or pgAdmin):
-
-CREATE USER app_user WITH PASSWORD 'password';
+```sql
+CREATE USER app_user WITH PASSWORD 'change_me';
 CREATE DATABASE app_db OWNER app_user;
 GRANT ALL PRIVILEGES ON DATABASE app_db TO app_user;
+```
 
-## Authentication
+Keep these credentials for your backend `.env` configuration.
 
-Users can register and log in via the web interface or API endpoints:
+---
 
-POST /api/register
-POST /api/login
+## 4. Backend Setup (Flask)
 
+### 4.1 Create a Virtual Environment and Install Dependencies
 
-JWT tokens are issued upon login and attached to all subsequent requests in the Authorization header:
+```bash
+cd backend
+python -m venv .venv
 
-Authorization: Bearer <token>
+# Activate virtual environment
+# Windows (PowerShell):
+. .\.venv\Scripts\Activate.ps1
+# Windows (cmd):
+.\.venv\Scripts\activate.bat
+# macOS/Linux:
+source .venv/bin/activate
 
-## API Overview (selected)
-Endpoint	Method	Description
-/api/import-csv	POST	Import REDCap data dictionary
-/api/all-forms	GET	List all forms
-/api/questions/all	GET	Retrieve all questions
-/api/custom-forms	POST	Create custom form
-/api/export-csv/:id	GET	Export REDCap-compatible CSV
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-## Development Tips
+---
 
-React frontend hot-reloads automatically on file changes.
+### 4.2 Configure Environment Variables
+
+Create a `.env` file in `backend/`:
+
+```ini
+# Flask
+FLASK_APP=src.app:app
+FLASK_ENV=development
+
+# Security
+JWT_SECRET=change_this_secret
+
+# Database (PostgreSQL)
+DATABASE_URL=postgresql+psycopg://app_user:change_me@localhost:5432/app_db
+
+# CORS (React uses port 3000)
+CORS_ORIGINS=http://localhost:3000
+```
+
+> Ensure `FLASK_APP` matches your Flask app import path (e.g., `src.app:app` or `app:app`).
+
+---
+
+### 4.3 Initialize the Database (Alembic)
+
+```bash
+alembic upgrade head
+```
+
+> If Alembic is not set up yet, initialize it first:
+>
+> ```bash
+> alembic init alembic
+> ```
+>
+> Configure it to match your SQLAlchemy models, generate a migration:
+>
+> ```bash
+> alembic revision --autogenerate -m "init"
+> ```
+>
+> and apply it:
+>
+> ```bash
+> alembic upgrade head
+> ```
+
+---
+
+### 4.4 Start the Flask Server
+
+```bash
+flask run --host=0.0.0.0 --port=8000
+```
+
+The API will be available at:  
+**http://localhost:8000**
+
+---
+
+## 5. Frontend Setup (React)
+
+### 5.1 Install Dependencies
+
+```bash
+cd frontend
+npm install
+```
+
+---
+
+### 5.2 Configure Environment Variables
+
+Create a `.env` file in `frontend/`:
+
+```ini
+REACT_APP_API_BASE_URL=http://localhost:8000
+```
+
+Your frontend reads this as `process.env.REACT_APP_API_BASE_URL`.
+
+---
+
+### 5.3 Start the Development Server
+
+```bash
+npm start
+```
+
+The frontend will be available at:  
+**http://localhost:3000**
+
+---
+
+## 6. First Run Checklist
+
+1. PostgreSQL is running and `app_db` exists.  
+2. Flask backend is running on `http://localhost:8000`.  
+3. React frontend is running on `http://localhost:3000`.  
+4. Register a new user via the UI or API (`POST /api/register`).  
+5. Log in (`POST /api/login`).  
+6. Import a REDCap CSV or create a new questionnaire in the web interface.
+
+---
+
+## 7. PyCharm Configuration (Optional)
+
+### Flask (Backend)
+- **Run → Edit Configurations → Add New → Flask Server**
+  - `FLASK_APP`: `src.app:app`
+  - `FLASK_ENV`: `development`
+  - Environment variables: use `.env`
+  - Host: `0.0.0.0`
+  - Port: `8000`
+- Interpreter: select project’s `.venv`.
+
+### npm (Frontend)
+- **Run → Edit Configurations → Add New → npm**
+  - `package.json`: `frontend/package.json`
+  - Command: `start`
+
+---
+
+## 8. Docker Setup (Optional)
+
+Create `docker-compose.yml` in your project root:
+
+```yaml
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: change_me
+      POSTGRES_DB: app_db
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_user -d app_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+```
+
+For production:
+- Use Gunicorn or uWSGI for Flask.
+- Build frontend (`npm run build`) and serve it with Nginx.
+- Restrict CORS and use HTTPS via a reverse proxy.
+
+---
+
+## 9. Troubleshooting
+
+| Problem | Possible Fix |
+|----------|---------------|
+| **Port already in use** | Change ports or stop conflicting process (3000 or 8000). |
+| **CORS error** | Ensure `CORS_ORIGINS` matches frontend URL. |
+| **Database connection fails** | Verify Postgres is running and `DATABASE_URL` credentials. |
+| **Migrations missing tables** | Run `alembic upgrade head`. |
+| **Frontend cannot reach API** | Confirm `REACT_APP_API_BASE_URL` is correct. |
+
+---
+
+## 10. Security Notes
+
+- Never commit `.env` or secrets to version control.  
+- Use a strong `JWT_SECRET` and secure database passwords.  
+- Set `FLASK_ENV=production` for deployment.  
+- Limit `CORS_ORIGINS` to trusted domains.  
+- Always use HTTPS in production.
+
+---
+
+**End of Installation Guide**
+
 
 Flask backend uses Blueprints for modularity (auth, import, questions, forms).
 
