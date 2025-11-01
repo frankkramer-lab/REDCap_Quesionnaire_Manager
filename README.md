@@ -23,7 +23,7 @@ Users can navigate between modules, view imported forms, and access profile or q
 ---
 
 ### 🔹 Questionnaire Editor
-![Questionnaire Editor](assets/Screenshot%202025-09-19%20160548.png)
+![Questionnaire Editor](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-19%20160603.png)
 
 **Description:**  
 Interface for editing and validating individual questions.  
@@ -32,7 +32,7 @@ Users can modify question text, choices, validation rules, and branching logic i
 ---
 
 ### 🔹 Version History
-![Version History](assets/Screenshot%202025-09-19%20164320.png)
+![Version History](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-19%20165612.png)
 
 **Description:**  
 Displays all available versions of a question or form.  
@@ -41,7 +41,7 @@ Users can track changes, compare versions, and revert to previous states while m
 ---
 
 ### 🔹 Question Composer
-![Question Composer](assets/Screenshot%202025-09-19%20140220.png)
+![Question Composer](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-19%20140220.png)
 
 **Description:**  
 Drag-and-drop interface for assembling new questionnaires from existing validated questions and sections.  
@@ -50,7 +50,7 @@ Facilitates reuse, consistency, and structured form design.
 ---
 
 ### 🔹 Unified Form View 1/2
-![Unified Form View 1](assets/Screenshot%202025-09-19%20140512.png)
+![Unified Form View 1](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-19%20140512.png)
 
 **Description:**  
 Displays all imported and custom questionnaires together in a unified view.  
@@ -59,7 +59,7 @@ Users can browse, filter, and inspect forms along with their sections and questi
 ---
 
 ### 🔹 Unified Form View 2/2
-![Unified Form View 2](assets/Screenshot%202025-09-19%20134516.png)
+![Unified Form View 2](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-19%20134546.png)
 
 **Description:**  
 Extended hierarchical view showing the modular structure of forms, sections, and questions.  
@@ -68,7 +68,7 @@ Supports visual grouping and quick navigation through complex questionnaires.
 ---
 
 ### 🔹 Profile Page
-![Profile Page](assets/Screenshot%202025-09-17%20204212.png)
+![Profile Page](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-09-17%20204212.png)
 
 **Description:**  
 User profile management area.  
