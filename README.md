@@ -72,7 +72,7 @@ Supports visual grouping and quick navigation through complex questionnaires.
 
 **Description:**  
 User profile management area.  
-Allows editing account details, changing password, and managing authentication tokens securely.
+Allows editing account details.
 
 ---
 
@@ -81,7 +81,7 @@ All screenshots were taken from the local development environment using the defa
 Displayed data are synthetic and used for demonstration purposes only.
 
 
-
+---
 
 ## Tech Stack
 
