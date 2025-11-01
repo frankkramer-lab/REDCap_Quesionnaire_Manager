@@ -13,11 +13,8 @@ A web application for structured management, version control, and reuse of REDCa
 
 ## Screenshots
 
-## Screenshots
-
 ### 🔹 Dashboard
-
-![Dashboard](https://github.com/user-attachments/assets/868b537f-9c42-446d-9783-6910a9bc17d2)
+![Dashboard](assets/Screenshot%202025-10-13%20185814.png)
 
 **Description:**  
 The main entry point of the application.  
@@ -26,8 +23,7 @@ Users can navigate between modules, view imported forms, and access profile or q
 ---
 
 ### 🔹 Questionnaire Editor
-
-![Questionnaire Editor](https://github.com/user-attachments/assets/cd1aa304-2263-49c2-a152-cd5ab289ffe2)
+![Questionnaire Editor](assets/Screenshot%202025-09-19%20160548.png)
 
 **Description:**  
 Interface for editing and validating individual questions.  
@@ -36,8 +32,7 @@ Users can modify question text, choices, validation rules, and branching logic i
 ---
 
 ### 🔹 Version History
-
-![Version History](https://github.com/user-attachments/assets/ec981b93-5ad7-4978-bf8f-a83e285f51fe)
+![Version History](assets/Screenshot%202025-09-19%20164320.png)
 
 **Description:**  
 Displays all available versions of a question or form.  
@@ -46,8 +41,7 @@ Users can track changes, compare versions, and revert to previous states while m
 ---
 
 ### 🔹 Question Composer
-
-![Question Composer](https://github.com/user-attachments/assets/04f9e75d-3f6e-4f7c-b704-45a9aa2a9438)
+![Question Composer](assets/Screenshot%202025-09-19%20140220.png)
 
 **Description:**  
 Drag-and-drop interface for assembling new questionnaires from existing validated questions and sections.  
@@ -56,8 +50,7 @@ Facilitates reuse, consistency, and structured form design.
 ---
 
 ### 🔹 Unified Form View 1/2
-
-![Unified Form View 1](https://github.com/user-attachments/assets/104af83f-f62b-4997-8a16-a45bdac8d679)
+![Unified Form View 1](assets/Screenshot%202025-09-19%20140512.png)
 
 **Description:**  
 Displays all imported and custom questionnaires together in a unified view.  
@@ -66,8 +59,7 @@ Users can browse, filter, and inspect forms along with their sections and questi
 ---
 
 ### 🔹 Unified Form View 2/2
-
-![Unified Form View 2](https://github.com/user-attachments/assets/82abd55c-cf12-4226-9b9d-e8fb0827a7a0)
+![Unified Form View 2](assets/Screenshot%202025-09-19%20134516.png)
 
 **Description:**  
 Extended hierarchical view showing the modular structure of forms, sections, and questions.  
@@ -76,8 +68,7 @@ Supports visual grouping and quick navigation through complex questionnaires.
 ---
 
 ### 🔹 Profile Page
-
-![Profile Page](https://github.com/user-attachments/assets/93f0b0ca-b936-4277-bf30-d35da43c59ac)
+![Profile Page](assets/Screenshot%202025-09-17%20204212.png)
 
 **Description:**  
 User profile management area.  
@@ -88,6 +79,7 @@ Allows editing account details, changing password, and managing authentication t
 **Note:**  
 All screenshots were taken from the local development environment using the default layout and styling.  
 Displayed data are synthetic and used for demonstration purposes only.
+
 
 
 
