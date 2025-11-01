@@ -14,7 +14,7 @@ A web application for structured management, version control, and reuse of REDCa
 ## Screenshots
 
 ### 🔹 Dashboard
-![Dashboard](assets/Screenshot%202025-10-13%20185814.png)
+![Dashboard](https://github.com/frankkramer-lab/REDCap_Quesionnaire_Manager/blob/main/frontend/src/assets/Screenshot%202025-10-13%20185814.png)
 
 **Description:**  
 The main entry point of the application.  
